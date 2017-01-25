@@ -13,6 +13,7 @@ public class Tetris extends PApplet {
     private int score;
     private boolean play;
     private ddf.minim.AudioPlayer bgm;
+    private int combo;
 
     public static void main(String args[]) {
         game = new Tetris();
@@ -47,6 +48,7 @@ public class Tetris extends PApplet {
         setNextBlock();
         time = millis();
         keyTime = millis();
+        combo = 0;
         playBgm();
     }
 
@@ -141,17 +143,33 @@ public class Tetris extends PApplet {
 
         }
         if (millis() >= time + 700)
-            if (block.checkBottom()) {
+            if (block.checkBottom()) { //블록이 고정됬다
+
                 block.fixBlock();
                 block = nextBlock;
                 setNextBlock();
+
+
             }
         if (millis() >= keyTime + 80) {
             keyIn = false;
         }
 
-        checkDeleteLine();
+
+
+
+
+       /* checkCombo(afterScore,beforeScore);
+        System.out.println((afterScore - beforeScore)/1000);
+        System.out.println(combo);*/
         checkGameOver();
+
+    }
+    private void checkCombo(int after,int before){
+        if(after > before)
+            combo++;
+        else if (after == before)
+            combo = 0;
     }
 
     private void drawFixedBlock() {
