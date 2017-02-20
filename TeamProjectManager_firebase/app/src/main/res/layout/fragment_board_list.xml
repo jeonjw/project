@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/search_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_margin="10dp"
+        android:hint="@string/board_search_hint"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:textSize="12sp"
+        android:background="@drawable/edit_text_background"
+        />
+
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignEnd="@id/search_edit_text"
+        android:layout_alignBottom="@id/search_edit_text"
+        android:background="#00ff0000"
+        android:text="@string/board_search"
+        android:textSize="12sp"/>
+
+    <EditText
+        android:id="@+id/write_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@+id/search_edit_text"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:hint="@string/board_write_hint"
+        android:textSize="12sp"
+        android:background="@drawable/edit_text_background"
+        />
+
+    <Button
+        android:id="@+id/write_button"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@id/write_edit_text"
+        android:layout_alignEnd="@id/write_edit_text"
+        android:layout_marginTop="5dp"
+        android:background="#00ff0000"
+        android:text="@string/board_write"
+        android:textSize="12sp"/>
+
+
+    <android.support.v7.widget.RecyclerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/board_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/write_edit_text"
+        android:layout_marginTop="10dp"
+        />
+
+
+</RelativeLayout>

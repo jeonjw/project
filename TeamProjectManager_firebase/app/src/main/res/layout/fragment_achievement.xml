@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/linearLayout">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="팀원 성취도"
+        android:textSize="30sp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"/>
+
+    <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        app:rcBackgroundColor="@color/progressBarBackgroundColor"
+        app:rcBackgroundPadding="2dp"
+        app:rcMax="100"
+        app:rcProgress="30"
+        app:rcProgressColor="@color/colorPrimaryDark"
+        app:rcRadius="5dp"
+        android:id="@+id/progress_bar1"/>
+
+    <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        app:rcBackgroundColor="@color/progressBarBackgroundColor"
+        app:rcBackgroundPadding="2dp"
+        app:rcMax="100"
+        app:rcProgress="80"
+        app:rcProgressColor="@color/colorPrimaryDark"
+        app:rcRadius="5dp" />
+    <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        app:rcBackgroundColor="@color/progressBarBackgroundColor"
+        app:rcBackgroundPadding="2dp"
+        app:rcMax="100"
+        app:rcProgress="50"
+        app:rcProgressColor="@color/colorPrimaryDark"
+        app:rcRadius="5dp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="자기 평가"
+        android:textSize="30sp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
+        android:weightSum="10">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="일시"
+            android:textSize="14sp"
+            android:layout_weight="4"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="과제명"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_weight="3"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="수행여부"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:layout_weight="3"/>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/achievement_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        />
+
+
+</LinearLayout>
