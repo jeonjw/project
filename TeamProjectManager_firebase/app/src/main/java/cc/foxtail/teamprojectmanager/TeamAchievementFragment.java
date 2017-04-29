@@ -14,9 +14,9 @@ import android.widget.TextView;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 
 import java.util.List;
+import java.util.StringTokenizer;
 
 public class TeamAchievementFragment extends Fragment {
-    private AchievementAdapter achievementAdapter;
     private TeamProject mTeamProject;
     private RecyclerView mRecyclerView;
 
@@ -37,8 +37,7 @@ public class TeamAchievementFragment extends Fragment {
     }
 
     private void updateUI() {
-        achievementAdapter = new AchievementAdapter(mTeamProject.getAssignmentList());
-        Log.d("Test"," "+mTeamProject.getAssignmentList().size());
+        AchievementAdapter achievementAdapter = new AchievementAdapter(mTeamProject.getAssignmentList());
         mRecyclerView.setAdapter(achievementAdapter);
         achievementAdapter.notifyDataSetChanged();
     }
@@ -62,13 +61,34 @@ public class TeamAchievementFragment extends Fragment {
             mTitleTextView.setText(mAssignment.getAssignmentTitle());
         }
 
+        //        private String dateToString() {
+//            CalendarDay startDate = mAssignment.getDateList().get(0);
+//            CalendarDay endDate = mAssignment.getDateList().get(mAssignment.getDateList().size() - 1);
+//            String sDate = String.valueOf(startDate.getYear() + "." + (startDate.getMonth()+1) + "." + startDate.getDay());
+//            String eDate = " - " + String.valueOf((endDate.getMonth()+1) + "." + endDate.getDay());
+//
+//            return sDate + eDate;
+//        }
         private String dateToString() {
-            CalendarDay startDate = mAssignment.getDateList().get(0);
-            CalendarDay endDate = mAssignment.getDateList().get(mAssignment.getDateList().size() - 1);
-            String sDate = String.valueOf(startDate.getYear() + "." + (startDate.getMonth()+1) + "." + startDate.getDay());
-            String eDate = " - " + String.valueOf((endDate.getMonth()+1) + "." + endDate.getDay());
+            String startDate = mAssignment.getDateList().get(0);
+            StringTokenizer startDateTokenizer = new StringTokenizer(startDate);
+            String startYear = startDateTokenizer.nextToken(".");
+            String startMonth = startDateTokenizer.nextToken(".");
+            String startDay = startDateTokenizer.nextToken(".");
 
-            return sDate + eDate;
+            startDate = startYear + "년 " + startMonth + "월 " + startDay + "일";
+
+            for (int i = 1; i < mAssignment.getDateList().size(); i++) {
+                String endDate = mAssignment.getDateList().get(i);
+                StringTokenizer endDateTokenizer = new StringTokenizer(endDate);
+                endDateTokenizer.nextToken(".");
+                String endMonth = endDateTokenizer.nextToken(".");
+                String endDay = endDateTokenizer.nextToken(".");
+
+                startDate += ", " + endMonth + "월 " + endDay + "일";
+            }
+
+            return startDate;
         }
 
     }

@@ -2,7 +2,7 @@
     <string name="app_name">TeamProjectManager</string>
     <string name="id">ID</string>
     <string name="pw">PW</string>
-    <string name="login">login</string>
+    <string name="login">Sign in With Google</string>
     <string name="miss_pw">비밀번호를 잊으셨나요?</string>
     <string name="join">회원가입</string>
     <string name="project_manager">Project Manager</string>
@@ -10,7 +10,7 @@
     <string name="title_activity_home">Project Manager</string>
     <string name="actionbar_settings">설정</string>
     <string name="actionbar_my_info">내정보</string>
-    <string name="actionbar_notice">알림</string>
+    <string name="actionbar_invite">초대</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="project_create">프로젝트 생성하기</string>
     <string name="add_member">멤버 추가</string>
@@ -24,5 +24,6 @@
     <string name="button_meeting_add">모임 등록</string>
     <string name="button_return">돌아가기</string>
     <string name="chat_send_button">전송</string>
+    <string name="actionbar_logout">로그아웃</string>
 
 </resources>

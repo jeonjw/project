@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Practice_week1</string>
+    <string name="exclaim_btn">Exclamation</string>
+    <string name="hello">Hello</string>
+    <string name="good_bye">Goodbye!</string>
+    <string name="exclaim_img">Exclamation_img</string>
+
+
+</resources>

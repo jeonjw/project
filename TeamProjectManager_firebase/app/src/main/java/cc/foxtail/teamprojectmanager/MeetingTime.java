@@ -1,6 +1,10 @@
 package cc.foxtail.teamprojectmanager;
 
 public class MeetingTime {
+    public MeetingTime() {
+
+    }
+
     public int getStartHour() {
         return startHour;
     }

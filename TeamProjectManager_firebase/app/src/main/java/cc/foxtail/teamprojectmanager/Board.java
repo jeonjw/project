@@ -1,14 +1,27 @@
 package cc.foxtail.teamprojectmanager;
 
-
-import java.util.Date;
-
 public class Board {
-    private Date mDate;
+    public void setDate(String mDate) {
+        this.mDate = mDate;
+    }
+
+    public void setText(String mText) {
+        this.mText = mText;
+    }
+
+    public void setWriter(String mWriter) {
+        this.mWriter = mWriter;
+    }
+
+    private String mDate;
     private String mText;
     private String mWriter;
 
-    public Date getDate() {
+    public Board() {
+
+    }
+
+    public String getDate() {
         return mDate;
     }
 
@@ -20,8 +33,8 @@ public class Board {
         return mWriter;
     }
 
-    public Board(Date date,String text,String writer){
-        mDate = date;
+    public Board(String date, String text, String writer) {
+        this.mDate = date;
         mText = text;
         mWriter = writer;
     }

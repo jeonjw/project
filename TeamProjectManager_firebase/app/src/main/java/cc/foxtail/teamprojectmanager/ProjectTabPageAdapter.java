@@ -19,21 +19,16 @@ public class ProjectTabPageAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
 
         switch (position) {
-            case 0: {
+            case 0:
                 return ScheduleFragment.newInstance(mTeamProject);
-            }
             case 1:
                 return new FileShareFragment();
             case 2:
                 return TeamAchievementFragment.newInstance(mTeamProject);
-            case 3: {
-                BoardFragment boardFragment = new BoardFragment();
-                boardFragment.setBoardList(mTeamProject.getBoardList());
-
-                return boardFragment;
-            }
+            case 3:
+                return BoardFragment.newInstance(mTeamProject);
             case 4:
-                return new ChattingFragment();
+                return ChattingFragment.newInstance(mTeamProject.getTitle());
             default:
                 return null;
         }

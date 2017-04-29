@@ -13,8 +13,13 @@
         android:title="@string/actionbar_my_info"
         app:showAsAction="never"/>
     <item
-        android:id="@+id/actionbar_notice"
+        android:id="@+id/actionbar_invite"
         android:orderInCategory="100"
-        android:title="@string/actionbar_notice"
+        android:title="@string/actionbar_invite"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/actionbar_logout"
+        android:orderInCategory="100"
+        android:title="@string/actionbar_logout"
         app:showAsAction="never"/>
 </menu>

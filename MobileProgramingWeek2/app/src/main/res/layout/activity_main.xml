@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.jinwoo.mobileprogramingweek2.MainActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:text="@string/weight_of_the_package"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView3"
+        android:gravity="center"
+        android:text="@string/zero"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_text"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="@string/ouncesLBL" />
+
+
+    <TextView
+        android:id="@+id/baseLBL_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_text"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="100dp"
+        android:text="@string/baseLBL" />
+
+    <TextView
+        android:id="@+id/base_cost_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/baseLBL_textView"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:text="@string/default_dollar" />
+
+    <TextView
+        android:id="@+id/addLBL_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/baseLBL_textView"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/addCostLBL" />
+
+    <TextView
+        android:id="@+id/add_cost_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/base_cost_text_view"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/default_dollar" />
+
+    <TextView
+        android:id="@+id/totalLBL_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addLBL_text_view"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/totalLBL" />
+
+    <TextView
+        android:id="@+id/total_cost_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/add_cost_text_view"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/default_dollar" />
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="30dp"
+        android:id="@+id/book_add_button"
+        android:text="@string/add"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:background="#9ACD32"
+        android:layout_below="@+id/totalLBL_text_view"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/book"
+        android:id="@+id/book_text_view"
+        android:layout_alignBaseline="@id/book_add_button"
+        android:layout_toRightOf="@id/book_add_button"
+        android:layout_marginLeft="50dp"
+        android:textSize="30sp"
+        android:textColor="#00aaff"/>
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/book_sub_button"
+        android:text="@string/sub"
+        android:layout_alignBaseline="@+id/book_count_text_view"
+        android:layout_alignBottom="@+id/book_count_text_view"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:background="#9ACD32"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/book_count_text_view"
+        android:layout_alignBaseline="@id/book_add_button"
+        android:layout_toLeftOf="@id/book_sub_button"
+        android:text="@string/zero"
+        android:textSize="30sp"
+        android:layout_marginRight="10dp"/>
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:id="@+id/pencil_add_button"
+        android:text="@string/add"
+        android:layout_below="@+id/book_add_button"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:background="#9ACD32"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pencil"
+        android:id="@+id/pencil_text_view"
+        android:layout_alignBaseline="@id/pencil_add_button"
+        android:layout_toRightOf="@id/book_add_button"
+        android:layout_marginLeft="50dp"
+        android:textSize="30sp"
+        android:textColor="#00aaff"/>
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/pencil_sub_button"
+        android:text="@string/sub"
+        android:layout_below="@+id/book_sub_button"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:background="#9ACD32"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pencil_count_text_view"
+        android:layout_alignBaseline="@id/pencil_add_button"
+        android:layout_toLeftOf="@id/pencil_sub_button"
+        android:text="@string/zero"
+        android:textSize="30sp"
+        android:layout_marginRight="10dp"/>
+
+
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:id="@+id/eraser_add_button"
+        android:text="@string/add"
+        android:layout_below="@+id/pencil_add_button"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:background="#9ACD32"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/eraser"
+        android:id="@+id/eraser_text_view"
+        android:layout_alignBaseline="@id/eraser_add_button"
+        android:layout_toRightOf="@id/book_add_button"
+        android:layout_marginLeft="50dp"
+        android:textSize="30sp"
+        android:textColor="#00aaff"/>
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/eraser_sub_button"
+        android:text="@string/sub"
+        android:layout_below="@+id/pencil_sub_button"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:background="#9ACD32"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/eraser_count_text_view"
+        android:layout_alignBaseline="@id/eraser_add_button"
+        android:layout_toLeftOf="@id/pencil_sub_button"
+        android:text="@string/zero"
+        android:textSize="30sp"
+        android:layout_marginRight="10dp"/>
+
+</RelativeLayout>

@@ -11,7 +11,7 @@ public abstract class Shape implements Cloneable {
         this.posY = posY;
         this.width = width;
         this.height = height;
-        color = new Color();
+        this.color = new Color();
         this.strokeLevel = 10;
     }
 
@@ -84,3 +84,4 @@ public abstract class Shape implements Cloneable {
     }
 
 }
+//반복문 조건문

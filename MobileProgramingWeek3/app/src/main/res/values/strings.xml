@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MobileProgramingWeek3</string>
+    <string name="title">식당 예약 어플리케이션</string>
+    <string name="reserve_date">예약 날짜:</string>
+</resources>

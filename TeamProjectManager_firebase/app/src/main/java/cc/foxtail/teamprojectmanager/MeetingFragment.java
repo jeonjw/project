@@ -13,17 +13,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 public class MeetingFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private TeamProject mTeamProject;
     private MeetingAdapter adapter;
     private MeetingTimeAdapter meetingTimeAdapter;
+    private DatabaseReference mDatabase;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
@@ -32,6 +37,7 @@ public class MeetingFragment extends Fragment {
         final ScheduleFragment scheduleFragment = (ScheduleFragment) getParentFragment();
         scheduleFragment.clearSelection();
 
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         mTeamProject = getArguments().getParcelable("MeetingFragment");
         mRecyclerView = (RecyclerView) view.findViewById(R.id.meeting_recycler_view);
 
@@ -67,6 +73,9 @@ public class MeetingFragment extends Fragment {
     public void addMeeting(Meeting meeting) {
         mTeamProject.getMeetingList().add(meeting);
         adapter.notifyDataSetChanged();
+
+        Query query = mDatabase.child("TeamProject").orderByChild("title").equalTo(mTeamProject.getTitle());
+        query.getRef().child(mTeamProject.getTitle()).setValue(mTeamProject);
     }
 
 
@@ -85,38 +94,44 @@ public class MeetingFragment extends Fragment {
 
         public void bindMeeting(Meeting meeting) {
             mMeeting = meeting;
-            mTitleTextView.setText(meetingDatesToStringTitle());
+            mTitleTextView.setText(dateToString());
         }
-        public String meetingDatesToStringTitle(){
-            String title = String.valueOf(mMeeting.getDateList().get(0).getMonth()+1)+"월 ";
-            for(int i = 0 ; i < mMeeting.getDateList().size(); i++){
-                title +=  String.valueOf(mMeeting.getDateList().get(i).getDay()) +"일 ";
-            }
-            return title;
-        }
-        private String dateToString(){
-            CalendarDay startDate = mMeeting.getDateList().get(0);
-            CalendarDay endDate = mMeeting.getDateList().get(mMeeting.getDateList().size()-1);
-            String sDate = String.valueOf(startDate.getYear()+"."+startDate.getMonth()+1+"."+startDate.getDay());
-            String eDate = " - " + String.valueOf(endDate.getMonth()+1+"."+endDate.getDay());
 
-            return sDate + eDate;
+        private String dateToString() {
+            String startDate = mMeeting.getDateList().get(0);
+            StringTokenizer startDateTokenizer = new StringTokenizer(startDate);
+            String startYear = startDateTokenizer.nextToken(".");
+            String startMonth = startDateTokenizer.nextToken(".");
+            String startDay = startDateTokenizer.nextToken(".");
+
+            startDate = startYear + "년 " + startMonth + "월 " + startDay + "일";
+
+            for (int i = 1; i < mMeeting.getDateList().size(); i++) {
+                String endDate = mMeeting.getDateList().get(i);
+                StringTokenizer endDateTokenizer = new StringTokenizer(endDate);
+                endDateTokenizer.nextToken(".");
+                String endMonth = endDateTokenizer.nextToken(".");
+                String endDay = endDateTokenizer.nextToken(".");
+
+                startDate += ", " + endMonth + "월 " + endDay + "일";
+            }
+
+            return startDate;
         }
 
         @Override
         public void onClick(View v) {
-
-            LayoutInflater inflater = getLayoutInflater(Bundle.EMPTY);
+            LayoutInflater inflater = getActivity().getLayoutInflater();
             final View dialogView = inflater.inflate(R.layout.dialog_meeting_time_select, null);
 
-            AlertDialog.Builder buider = new AlertDialog.Builder(getActivity());
-            buider.setTitle("모임시간 투표");
-            buider.setView(dialogView);
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle("모임시간 투표");
+            builder.setView(dialogView);
 
             if (mMeeting.getVoteUserNum() == 3) {
                 MeetingTime meetingTime = mMeeting.getElectedMeetingTime();
-                TextView electionMentTextView = (TextView) dialogView.findViewById(R.id.election_text_view);
-                electionMentTextView.setText("최다 투표 시간");
+                TextView electionTextView = (TextView) dialogView.findViewById(R.id.election_text_view);
+                electionTextView.setText("최다 투표 시간");
 
                 TextView electedTimeTextView = (TextView) dialogView.findViewById(R.id.elected_time_text_view);
                 electedTimeTextView.setText(meetingTime.getStartHour() + ":00" + " ~ " + meetingTime.getEndHour() + ":00");
@@ -134,7 +149,7 @@ public class MeetingFragment extends Fragment {
                 meetingTimeAdapter = new MeetingTimeAdapter(mMeeting.getMeetingTimeList());
                 recyclerView.setAdapter(meetingTimeAdapter);
 
-                buider.setPositiveButton("투표 완료", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton("투표 완료", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         List<MeetingTime> checkedList = new ArrayList<>();
@@ -151,14 +166,14 @@ public class MeetingFragment extends Fragment {
                     }
                 });
             }
-            buider.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+            builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
 
                 }
             });
 
-            AlertDialog dialog = buider.create();
+            AlertDialog dialog = builder.create();
             dialog.setCanceledOnTouchOutside(false);
             dialog.show();
         }
@@ -254,7 +269,6 @@ public class MeetingFragment extends Fragment {
         public int getItemCount() {
             return meetingTimeList.size();
         }
-
 
     }
 

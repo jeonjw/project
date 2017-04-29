@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="libSound">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/libSound/jl1.0.1.jar!/" />
-      <root url="jar://$PROJECT_DIR$/libSound/minim.jar!/" />
-      <root url="jar://$PROJECT_DIR$/libSound/mp3spi1.9.5.jar!/" />
       <root url="jar://$PROJECT_DIR$/libSound/tritonus_share.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSound/jl1.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSound/mp3spi1.9.5.jar!/" />
       <root url="jar://$PROJECT_DIR$/libSound/tritonus_aos.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSound/minim.jar!/" />
       <root url="jar://$PROJECT_DIR$/libSound/jsminim.jar!/" />
     </CLASSES>
     <JAVADOC />

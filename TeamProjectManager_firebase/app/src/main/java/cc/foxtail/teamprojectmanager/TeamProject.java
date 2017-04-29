@@ -6,20 +6,32 @@ import android.os.Parcelable;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
-public class TeamProject implements Parcelable {
+public class TeamProject implements Parcelable, Serializable {
 
-    private UUID mId;
     private String mTitle;
-    private List<Board> mBoardList;
+
+    public void setMeetingList(List<Meeting> meetingList) {
+        this.mMeetingList = meetingList;
+    }
+
+    public void setBoardList(List<Board> boardList) {
+        this.mBoardList = boardList;
+    }
+
+    public void setAssignmentList(List<Assignment> assignmentList) {
+        this.mAssignmentList = assignmentList;
+    }
+
+    public void setUserList(List<String> userList){
+        this.mUserList = userList;
+    }
+
+
     private List<Meeting> mMeetingList;
     private List<Assignment> mAssignmentList;
-
-
-    public void setId(UUID id) {
-        mId = id;
-    }
+    private List<Board> mBoardList;
+    private List<String> mUserList;
 
     public void setTitle(String title) {
         mTitle = title;
@@ -29,15 +41,11 @@ public class TeamProject implements Parcelable {
         return mTitle;
     }
 
-    public UUID getId() {
-        return mId;
-    }
-
     public TeamProject() {
-        mId = UUID.randomUUID();
         mBoardList = new ArrayList<>();
         mMeetingList = new ArrayList<>();
         mAssignmentList = new ArrayList<>();
+        mUserList = new ArrayList<>();
     }
 
     public List<Board> getBoardList() {
@@ -51,6 +59,8 @@ public class TeamProject implements Parcelable {
     public List<Assignment> getAssignmentList() {
         return mAssignmentList;
     }
+
+    public List<String> getUserList() { return mUserList;}
 
 
     @Override

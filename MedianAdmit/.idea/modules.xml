@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MedianAdmit.iml" filepath="$PROJECT_DIR$/.idea/modules/MedianAdmit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MedianAdmit_main.iml" filepath="$PROJECT_DIR$/.idea/modules/MedianAdmit_main.iml" group="MedianAdmit" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MedianAdmit_test.iml" filepath="$PROJECT_DIR$/.idea/modules/MedianAdmit_test.iml" group="MedianAdmit" />
+    </modules>
+  </component>
+</project>

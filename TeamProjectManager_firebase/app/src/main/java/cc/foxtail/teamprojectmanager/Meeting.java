@@ -1,12 +1,16 @@
 package cc.foxtail.teamprojectmanager;
 
-import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.google.firebase.database.Exclude;
 
 import java.util.List;
 
 public class Meeting {
 
-    private List<CalendarDay> dateList;
+    public Meeting() {
+
+    }
+
+    private List<String > dateList;
     private List<MeetingTime> meetingTimeList;
     private int userNum;
 
@@ -16,11 +20,11 @@ public class Meeting {
 
     private int voteUserNum;
 
-    public List<CalendarDay> getDateList() {
+    public List<String> getDateList() {
         return dateList;
     }
 
-    public Meeting(List<CalendarDay> dateList, List<MeetingTime> meetingTimeList) {
+    public Meeting(List<String> dateList, List<MeetingTime> meetingTimeList) {
         this.dateList = dateList;
         this.meetingTimeList = meetingTimeList;
         userNum = 3;
@@ -40,6 +44,7 @@ public class Meeting {
         voteUserNum++;
     }
 
+    @Exclude
     public MeetingTime getElectedMeetingTime() {
         int max = 0;
         int position = 0;

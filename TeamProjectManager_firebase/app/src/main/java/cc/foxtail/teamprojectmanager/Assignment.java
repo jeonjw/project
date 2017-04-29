@@ -1,13 +1,17 @@
 package cc.foxtail.teamprojectmanager;
 
-import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.google.firebase.database.Exclude;
 
 import java.util.List;
 
 public class Assignment {
     private String assignmentTitle;
     private String assignmentDetails;
-    private List<CalendarDay> dateList;
+    private List<String> dateList;
+
+    public Assignment(){
+
+    }
 
     public String getAssignmentDetails() {
         return assignmentDetails;
@@ -17,14 +21,16 @@ public class Assignment {
         return assignmentTitle;
     }
 
-    public Assignment(String title, String details, List<CalendarDay> dateList) {
+    public Assignment(String title, String details, List<String> dateList) {
         this.assignmentTitle = title;
         this.assignmentDetails = details;
         this.dateList = dateList;
     }
 
-    public List<CalendarDay> getDateList() {
+    public List<String> getDateList() {
         return dateList;
     }
+
+
 
 }

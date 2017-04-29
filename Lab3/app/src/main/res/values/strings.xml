@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Lab3</string>
+    <string name="title">식당 예약 어플리케이션</string>
+    <string name="reserve_date">예약 날짜:</string>
+    <string name="reserve_people">예약 인원</string>
+    <string name="reserve">예약하기</string>
+    <string name="minus">-</string>
+    <string name="plus">+</string>
+    <string name="default_people">0명</string>
+    <string name="date">date</string>
+</resources>

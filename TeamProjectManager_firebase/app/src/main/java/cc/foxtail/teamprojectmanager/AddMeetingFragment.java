@@ -73,12 +73,12 @@ public class AddMeetingFragment extends Fragment {
                     }
                 }
 
-                if(checkedList.size()==0){
-                    Toast.makeText(getActivity(),"시간을 입력해주세요",Toast.LENGTH_SHORT).show();
+                if (checkedList.size() == 0) {
+                    Toast.makeText(getActivity(), "시간을 입력해주세요", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                Meeting meeting = new Meeting(selectedDateList, checkedList);
+                Meeting meeting = new Meeting(changeDateToString(selectedDateList), checkedList);
 
                 Fragment fragment = getTargetFragment();
                 ((MeetingFragment) fragment).addMeeting(meeting);
@@ -103,12 +103,17 @@ public class AddMeetingFragment extends Fragment {
             mRecyclerView.setAdapter(null);
         }
     }
-    /*
-    * 달력 날짜를 클릭할때 리스트에 추가하고 다시 또 클릭이되면 리스트에서 제거를 하는게 더 좋을듯하다.
-    * onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected)
-    * 여기서 date값을 로그 찍어보니 선택되고 해제될때마다 로그가 나왔다.
-    *
-    * */
+
+    private List<String> changeDateToString(List<CalendarDay> dateList) {
+
+        List<String> stringDateList = new ArrayList<>();
+
+        for (CalendarDay date : dateList) {
+            String dateToString = String.valueOf(date.getYear() + "." + (date.getMonth() + 1) + "." + date.getDay());
+            stringDateList.add(dateToString);
+        }
+        return stringDateList;
+    }
 
 
     public class MeetingTimeHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

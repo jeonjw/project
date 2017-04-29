@@ -12,31 +12,33 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 
 import java.util.List;
 
-public class AssignmentFragment extends Fragment{
+public class AssignmentFragment extends Fragment {
 
     private TeamProject mTeamProject;
     private AssignmentAdapter adapter;
+    private DatabaseReference mDatabase;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_assignment,container,false);
+        View view = inflater.inflate(R.layout.fragment_assignment, container, false);
 
         final ScheduleFragment scheduleFragment = (ScheduleFragment) getParentFragment();
         scheduleFragment.clearSelection();
-        //scheduleFragment.setSelectMode(MaterialCalendarView.SELECTION_MODE_SINGLE);
 
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         mTeamProject = getArguments().getParcelable("AssignmentFragment");
 
         RecyclerView mRecyclerView = (RecyclerView) view.findViewById(R.id.assignment_recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(layoutManager);
-
-
 
         FloatingActionButton addButton = (FloatingActionButton) view.findViewById(R.id.floating_assignment_add_button);
 
@@ -62,6 +64,9 @@ public class AssignmentFragment extends Fragment{
     public void addAssignment(Assignment assignment) {
         mTeamProject.getAssignmentList().add(assignment);
         adapter.notifyDataSetChanged();
+
+        Query query = mDatabase.child("TeamProject").orderByChild("title").equalTo(mTeamProject.getTitle());
+        query.getRef().child(mTeamProject.getTitle()).setValue(mTeamProject);
     }
 
     private class AssignmentHolder extends RecyclerView.ViewHolder {

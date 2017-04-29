@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DrawCanvasExample</string>
+    <string name="clear">Clear</string>
+    <string name="pink">pink</string>
+    <string name="green">green</string>
+    <string name="undo">Undo</string>
+</resources>

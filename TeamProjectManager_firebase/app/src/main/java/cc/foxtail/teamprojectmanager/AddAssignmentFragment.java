@@ -67,7 +67,7 @@ public class AddAssignmentFragment extends Fragment {
                     return;
                 }
 
-                Assignment assignment = new Assignment(title,detail,selectedDateList);
+                Assignment assignment = new Assignment(title,detail,changeDateToString(selectedDateList));
 
                 Fragment fragment = getTargetFragment();
                 ((AssignmentFragment) fragment).addAssignment(assignment);
@@ -86,6 +86,16 @@ public class AddAssignmentFragment extends Fragment {
         });
 
         return view;
+    }
+    private List<String> changeDateToString(List<CalendarDay> dateList) {
+
+        List<String> stringDateList = new ArrayList<>();
+
+        for (CalendarDay date : dateList) {
+            String dateToString = String.valueOf(date.getYear() + "." + (date.getMonth() + 1) + "." + date.getDay());
+            stringDateList.add(dateToString);
+        }
+        return stringDateList;
     }
 
     public void setSelectedDateList(List<CalendarDay> selectedDateList) {

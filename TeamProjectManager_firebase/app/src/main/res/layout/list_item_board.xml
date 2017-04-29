@@ -28,9 +28,6 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="작성 날짜"/>
-
-
-
             <TextView
                 android:id="@+id/board_context_text_view"
                 android:layout_width="match_parent"
